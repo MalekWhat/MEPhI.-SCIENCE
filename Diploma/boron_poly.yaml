@@ -1,0 +1,23 @@
+
+phases:
+- name: boron_poly
+  thermo: fixed-stoichiometry
+  elements: [B]
+  species: [B(s)]
+  note: Solid boron with polynomial volume-temperature dependence
+
+species:
+- name: B(s)
+  composition: {B: 1}
+  thermo:
+    model: constant-cp
+    h0: 0
+    s0: 5860
+    cp0: 11100
+  equation-of-state:
+    - model: constant-volume
+      molar-volume: 4.623e-06
+    - model: molar-volume-temperature-polynomial
+      data:
+      - [4.623e-06, 7.998e-11, 1.128e-13, -3.838e-17]
+      - 300  #minT
